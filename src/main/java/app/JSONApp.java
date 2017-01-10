@@ -45,7 +45,7 @@ public class JSONApp {
     }
 
     public static JsonObject sessionResult() {
-        
+
         Student student = new Student(
                 "Andrii",
                 "Rodionov",

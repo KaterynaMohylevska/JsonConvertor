@@ -6,9 +6,10 @@ package json;
 public class JsonObject extends Json {
     private JsonPair[] jsonObj;
     private int counter = 0;
+
     public JsonObject(JsonPair... jsonPairs) {
         this.jsonObj = new JsonPair[jsonPairs.length];
-        for(JsonPair j: jsonPairs){
+        for (JsonPair j : jsonPairs) {
             this.jsonObj[this.counter] = j;
             this.counter++;
         }
@@ -17,9 +18,9 @@ public class JsonObject extends Json {
     @Override
     public String toJson() {
         String jsonStr = "{";
-        for (JsonPair j: this.jsonObj){
+        for (JsonPair j : this.jsonObj) {
             jsonStr += new JsonString(j.key).toJson() + ": " + j.value.toJson();
-            if (j != this.jsonObj[jsonObj.length-1]){
+            if (j != this.jsonObj[jsonObj.length - 1]) {
                 jsonStr += ", ";
             }
         }
@@ -29,19 +30,19 @@ public class JsonObject extends Json {
 
     public void add(JsonPair jsonPair) {
         boolean alreadyEx = false;
-        for (int i = 0; i < this.jsonObj.length; i++){
-            if (this.jsonObj[i].key == jsonPair.key){
+        for (int i = 0; i < this.jsonObj.length; i++) {
+            if (this.jsonObj[i].key == jsonPair.key) {
                 this.jsonObj[i] = jsonPair;
                 alreadyEx = true;
             }
         }
 
-        if (alreadyEx == false){
+        if (alreadyEx == false) {
             JsonPair[] newJsObj = this.jsonObj.clone();
             int count = 0;
             this.counter++;
             this.jsonObj = new JsonPair[this.counter];
-            for (JsonPair j: newJsObj){
+            for (JsonPair j : newJsObj) {
                 jsonObj[count] = j;
                 count++;
             }
@@ -51,8 +52,8 @@ public class JsonObject extends Json {
     }
 
     public Json find(String name) {
-        for (JsonPair j: this.jsonObj){
-            if (j.key == name){
+        for (JsonPair j : this.jsonObj) {
+            if (j.key == name) {
                 return j.value;
             }
         }
@@ -61,9 +62,9 @@ public class JsonObject extends Json {
 
     public JsonObject projection(String... names) {
         JsonObject newJson = new JsonObject();
-        for (JsonPair j: this.jsonObj){
-            for (String n: names){
-                if (j.key == n){
+        for (JsonPair j : this.jsonObj) {
+            for (String n : names) {
+                if (j.key == n) {
                     newJson.add(j);
                 }
             }

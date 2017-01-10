@@ -30,7 +30,7 @@ public class StudentTest {
     }
 
     @Test
-    public void  testToJsonWithSeveralExams() throws Exception {
+    public void testToJsonWithSeveralExams() throws Exception {
 
         Student student = new Student(
                 "Andrii",
