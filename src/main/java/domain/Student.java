@@ -9,6 +9,7 @@ public class Student extends BasicStudent {
     protected Tuple<String, Integer>[] exam;
 
     public Student(String name, String surname, Integer year, Tuple<String, Integer>... exams) {
+        super(name,surname,year);
         this.exam = new Tuple[exams.length];
         int counter = 0;
         for (Tuple<String, Integer> ex:exams){
@@ -43,9 +44,10 @@ public class Student extends BasicStudent {
                 obj[count] = jsonExam;
                 count++;
             }
+
             ex = new JsonPair("exams", new JsonArray(obj));
         }
-        JsonObject jsonObj = new JsonObject(name, surname, year,ex);
+        JsonObject jsonObj = new JsonObject(name, surname, year, ex);
         return jsonObj;
     }
 }
